@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Ollama or model cache (if any local copies)
+*.bin
+*.pt
+*.onnx
+
+# MacOS system files
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
