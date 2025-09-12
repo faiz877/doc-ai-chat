@@ -1,9 +1,19 @@
 from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 import pdfplumber
 import requests
 
 app = FastAPI()
+
+# Allow frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 # 1. Health check
 @app.get("/health")
