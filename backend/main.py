@@ -40,6 +40,6 @@ async def ask(body: Question):
         "prompt": f"Document: {DOCUMENT_TEXT[:2000]}\n\nQ: {q}\nA:",
         "stream": False
     }
-    r = requests.post("http://localhost:11434/api/generate", json=payload)
+    r = requests.post("http://host.docker.internal:11434/api/generate", json=payload)
     data = r.json()
     return {"answer": data.get("response", "")}
