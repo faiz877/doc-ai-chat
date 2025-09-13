@@ -5,6 +5,9 @@ export const uploadFile = async (file: File) => {
   formData.append("file", file);
   const response = await fetch(`${API_BASE_URL}/upload`, {
     method: "POST",
+    headers: {
+      'ngrok-skip-browser-warning': 'true'
+    },
     body: formData,
   });
   return response;
@@ -13,7 +16,10 @@ export const uploadFile = async (file: File) => {
 export const askQuestion = async (question: string) => {
   const response = await fetch(`${API_BASE_URL}/ask`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { 
+      "Content-Type": "application/json",
+      'ngrok-skip-browser-warning': 'true'
+    },
     body: JSON.stringify({ question }),
   });
   return response;
