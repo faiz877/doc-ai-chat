@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChatMessage } from "../types/types";
+import { askQuestion } from '../utils/api';
 
 export const useChat = () => {
   const [question, setQuestion] = useState("");
@@ -21,11 +22,7 @@ export const useChat = () => {
     setChat(newChat);
     
     try {
-      const res = await fetch("http://localhost:8000/ask", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: currentQuestion }),
-      });
+      const res = await askQuestion(currentQuestion);
       const data = await res.json();
       
       setChat(prev => {

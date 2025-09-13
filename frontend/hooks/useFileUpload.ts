@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { uploadFile } from '../utils/api';
 
 export const useFileUpload = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -13,10 +14,7 @@ export const useFileUpload = () => {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:8000/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await uploadFile(file);
       if (res.ok) {
         setUploaded(true);
       }
